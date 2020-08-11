@@ -1,6 +1,4 @@
-package com.Vinnie.logic;
-
-package com.Vinnie.logic;
+package com.innowadi.internship.logic;
 
 import com.innowadi.internship.logic.StudentLogic;
 import com.innowadi.internship.logic.StudentLogicI;
