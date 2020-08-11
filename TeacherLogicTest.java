@@ -1,4 +1,4 @@
-package com.Vinnie.logic;
+package com.innowadi.internship.logic;
 
 import com.innowadi.internship.logic.TeacherLogic;
 import com.innowadi.internship.logic.TeacherLogicI;
