@@ -1,4 +1,4 @@
-package com.innowadi.internship.logic;
+package com.Vinnie.logic;
 
 import com.innowadi.internship.logic.TeacherLogic;
 import com.innowadi.internship.logic.TeacherLogicI;
@@ -7,6 +7,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -43,6 +45,42 @@ public class TeacherLogicTest {
         Assert.assertEquals(teacher.getStaffNo(), search.getStaffNo());
         Assert.assertEquals(teacher.getName(), search.getName());
         Assert.assertEquals(teacher.getCourse(), search.getCourse());
+    }
+
+    @Test
+    public void delete() throws SQLException {
+        Teacher search = new Teacher();
+        search.setStaffNo("2345678");
+        if(!teacherLogicI.delete(search));
+        Assert.assertFalse(false);
+    }
+
+    @Test
+    public void findAll() throws SQLException {
+        List<Teacher> find;
+        find=teacherLogicI.findAll();
+        if(find.isEmpty());
+        Assert.assertFalse(false);
+    }
+
+    @Test
+    public void find() throws SQLException {
+        Teacher student=new Teacher();
+        student.setId(6545678);
+        //call find method
+        Teacher search=teacherLogicI.find(student.getId());
+        //check results
+        Assert.assertEquals(search.getId(),student.getId());
+    }
+
+    @Test
+    public void testFind() throws SQLException {
+        Teacher student=new Teacher();
+        student.setStaffNo("tondo");
+        //call find method
+        Teacher search=teacherLogicI.find(student.getStaffNo());
+        //check results
+        Assert.assertEquals(search.getId(),student.getId());
     }
 
 }
