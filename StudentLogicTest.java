@@ -1,12 +1,17 @@
 package com.Vinnie.logic;
 
+package com.Vinnie.logic;
+
 import com.innowadi.internship.logic.StudentLogic;
 import com.innowadi.internship.logic.StudentLogicI;
 import com.innowadi.internship.model.Student;
+import com.innowadi.internship.model.Teacher;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class StudentLogicTest {
@@ -57,4 +62,41 @@ public class StudentLogicTest {
         Assert.assertEquals(student.getRegistrationNo(), search.getRegistrationNo());
 
     }
+
+    @Test
+    public void find() throws SQLException {
+            Student student = new Student();
+            student.setIdNumber("89097");
+            student.setCourse("Program");
+            student.setRegistrationNo("C03/45788/12");
+            student.setName("Alice");
+            if (!studentLogicI.add(student))
+                Assert.assertFalse(false); // confirmation that it has failed
+            Student search = studentLogicI.find(student.getRegistrationNo());
+            Assert.assertEquals(student.getRegistrationNo(), search.getRegistrationNo());
+            Assert.assertEquals(student.getName(), search.getName());
+            Assert.assertEquals(student.getCourse(), search.getCourse());
+            Assert.assertEquals(student.getIdNumber(), search.getIdNumber());
+        }
+
+
+    @Test
+    public void findAll()  throws SQLException {
+        List<Student> find;  {};
+        find=studentLogicI.findAll();
+        if(find.isEmpty());
+        Assert.assertFalse(false);
+
+    }@Test
+    public void find1()  throws SQLException {
+        Student student=new Student();
+        student.setRegistrationNo("C03/45788/12");
+        //call find method
+        Student search=studentLogicI.find(student.getRegistrationNo());
+        //check results
+        Assert.assertEquals(search.getRegistrationNo(),student.getRegistrationNo());
+
+    }
 }
+
+
